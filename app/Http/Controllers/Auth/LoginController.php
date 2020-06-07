@@ -37,4 +37,12 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function authenticated(\Illuminate\Http\Request $request, $user)
+    {
+        $user->timestamps = false;
+        $user->last_login_at = now();
+        $user->last_login_ip = $request->ip();
+        $user->save();
+    }
 }
