@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in!<br>
+                    Last visit: {{Auth::user()->last_login_at}}
                 </div>
             </div>
         </div>
